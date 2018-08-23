@@ -8,5 +8,10 @@ namespace ToDo.Testes.Integrados.Mocks
         {
             Nome = "TesteNome"
         };
+
+        public static void AdicionarIdTarefa()
+        {
+            Subtarefa.IdTarefa = TarefaMock.Tarefa.Id;
+        }
     }
 }

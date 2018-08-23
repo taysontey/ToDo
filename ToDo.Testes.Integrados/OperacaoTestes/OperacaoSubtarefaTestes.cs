@@ -8,6 +8,13 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
     [TestFixture]
     public class OperacaoSubtarefaTestes
     {
+        private OperacaoTarefa _operacaoTarefa;
+        public OperacaoTarefa OperacaoTarefa
+        {
+            get => _operacaoTarefa ?? (_operacaoTarefa = new OperacaoTarefa());
+            set => _operacaoTarefa = value;
+        }
+
         private OperacaoSubtarefa _operacaoSubtarefa;
         public OperacaoSubtarefa OperacaoSubtarefa
         {
@@ -15,39 +22,46 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
             set => _operacaoSubtarefa = value;
         }
 
-        [OneTimeSetUp]
+        [SetUp]
         public void Initialize()
         {
-            var sucesso = OperacaoSubtarefa.Salvar(SubtarefaMock.Subtarefa);
+            var sucesso = OperacaoTarefa.Salvar(TarefaMock.Tarefa);
+            Assert.IsTrue(sucesso, "Erro ao salvar Tarefa.");
+
+            SubtarefaMock.AdicionarIdTarefa();
+            sucesso = OperacaoSubtarefa.Salvar(SubtarefaMock.Subtarefa);
             Assert.IsTrue(sucesso, "Erro ao salvar Subtarefa.");
         }
 
-        [OneTimeTearDown]
+        [TearDown]
         public void Dispose()
         {
             var sucesso = OperacaoSubtarefa.Excluir(SubtarefaMock.Subtarefa);
             Assert.IsTrue(sucesso, "Erro ao excluir Subtarefa.");
+
+            sucesso = OperacaoTarefa.Excluir(TarefaMock.Tarefa);
+            Assert.IsTrue(sucesso, "Erro ao excluir Tarefa.");
         }
 
         [Test]
-        public void QuandoAtualizarTarefaDeveRetornarSucesso()
+        public void QuandoAtualizarSubtarefaDeveRetornarSucesso()
         {
             var sucesso = OperacaoSubtarefa.Atualizar(SubtarefaMock.Subtarefa);
             Assert.IsTrue(sucesso, "Erro ao atualizar Subtarefa.");
         }
 
         [Test]
-        public void QuandoObterTodosDeveRetornarTarefas()
+        public void QuandoObterTodosDeveRetornarSubtarefas()
         {
-            var tarefas = OperacaoSubtarefa.ObterTodos();
-            Assert.IsTrue(tarefas.Any(), "Nenhuma Subtarefa encontrada.");
+            var subtarefas = OperacaoSubtarefa.ObterTodos();
+            Assert.IsTrue(subtarefas.Any(), "Nenhuma Subtarefa encontrada.");
         }
 
         [Test]
-        public void QuandoObterPorIdDeveRetornarTarefa()
+        public void QuandoObterPorIdDeveRetornarSubtarefa()
         {
-            var tarefa = OperacaoSubtarefa.ObterPorId(SubtarefaMock.Subtarefa.Id);
-            Assert.IsNotNull(tarefa, "Subtarefa não encontrada.");
+            var subtarefa = OperacaoSubtarefa.ObterPorId(SubtarefaMock.Subtarefa.Id);
+            Assert.IsNotNull(subtarefa, "Subtarefa não encontrada.");
         }
     }
 }

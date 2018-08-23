@@ -15,14 +15,14 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
             set => _operacaoTarefa = value;
         }
 
-        [OneTimeSetUp]
+        [SetUp]
         public void Initialize()
         {
             var sucesso = OperacaoTarefa.Salvar(TarefaMock.Tarefa);
             Assert.IsTrue(sucesso, "Erro ao salvar tarefa.");
         }
 
-        [OneTimeTearDown]
+        [TearDown]
         public void Dispose()
         {
             var sucesso = OperacaoTarefa.Excluir(TarefaMock.Tarefa);
