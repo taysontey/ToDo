@@ -5,10 +5,10 @@ namespace ToDo.AcessoDados.Repositorio.Interfaces
     public interface IRepositorioBase<T>
         where T : class
     {
-        void Inserir(T obj);
-        void Atualizar(T obj);
-        void Excluir(T obj);
-        List<T> ObterTodos();
+        bool Salvar(T obj);
+        bool Atualizar(T obj);
+        bool Excluir(T obj);
+        IEnumerable<T> ObterTodos();
         T ObterPorId(int id);
     }
 }

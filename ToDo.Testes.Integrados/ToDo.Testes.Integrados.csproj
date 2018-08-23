@@ -55,7 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Mocks\TarefaMock.cs" />
+    <Compile Include="OperacaoTestes\OperacaoTarefaTestes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\ToDo.Dominio\ToDo.Dominio.csproj">
       <Project>{E6CE497F-6CF2-429A-86C0-40AC53B56302}</Project>
       <Name>ToDo.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToDo.Negocio\ToDo.Negocio.csproj">
+      <Project>{02059D97-402A-48CF-A841-1BBAD5C58625}</Project>
+      <Name>ToDo.Negocio</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

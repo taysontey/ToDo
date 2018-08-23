@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
 using ToDo.AcessoDados.Repositorio.Interfaces;
 
 namespace ToDo.AcessoDados.Repositorio
@@ -16,32 +15,67 @@ namespace ToDo.AcessoDados.Repositorio
             Contexto = new Contexto();
         }
 
-        public virtual void Inserir(T obj)
+        public virtual bool Salvar(T obj)
         {
-            Contexto.Entry(obj).State = EntityState.Added;
-            Contexto.SaveChanges();
+            try
+            {
+                Contexto.Entry(obj).State = EntityState.Added;
+                return Convert.ToBoolean(Contexto.SaveChanges());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public virtual void Atualizar(T obj)
+        public virtual bool Atualizar(T obj)
         {
-            Contexto.Entry(obj).State = EntityState.Modified;
-            Contexto.SaveChanges();
+            try
+            {
+                Contexto.Entry(obj).State = EntityState.Modified;
+                return Convert.ToBoolean(Contexto.SaveChanges());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public virtual void Excluir(T obj)
+        public virtual bool Excluir(T obj)
         {
-            Contexto.Entry(obj).State = EntityState.Deleted;
-            Contexto.SaveChanges();
+            try
+            {
+                Contexto.Entry(obj).State = EntityState.Deleted;
+                return Convert.ToBoolean(Contexto.SaveChanges());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public virtual List<T> ObterTodos()
+        public virtual IEnumerable<T> ObterTodos()
         {
-            return Contexto.Set<T>().ToList();
+            try
+            {
+                return Contexto.Set<T>();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public virtual T ObterPorId(int id)
         {
-            return Contexto.Set<T>().Find(id);
+            try
+            {
+                return Contexto.Set<T>().Find(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public void Dispose()
