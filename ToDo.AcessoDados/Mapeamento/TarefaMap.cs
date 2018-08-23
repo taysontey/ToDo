@@ -7,26 +7,22 @@ namespace ToDo.AcessoDados.Mapeamento
     {
         public TarefaMap()
         {
-            ToTable("TAREFA");
+            ToTable("Tarefa");
 
             HasKey(t => t.Id);
 
             Property(t => t.Id)
-                .HasColumnName("ID")
                 .IsRequired();
 
             Property(t => t.Nome)
-               .HasColumnName("NOME")
                .HasMaxLength(64)
                .IsRequired();
 
             Property(t => t.Descricao)
-               .HasColumnName("DESCRICAO")
                .HasMaxLength(2000)
                .IsRequired();
 
             Property(t => t.Concluida)
-               .HasColumnName("CONCLUIDA")
                .IsRequired();
         }
     }

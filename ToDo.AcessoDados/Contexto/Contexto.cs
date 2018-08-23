@@ -9,10 +9,10 @@ namespace ToDo.AcessoDados
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new TarefaMap());
-            modelBuilder.Configurations.Add(new SubTarefaMap());
+            modelBuilder.Configurations.Add(new SubtarefaMap());
         }
 
         public DbSet<Tarefa> Tarefa { get; set; }
-        public DbSet<SubTarefa> SubTarefa { get; set; }
+        public DbSet<Subtarefa> Subtarefa { get; set; }
     }
 }

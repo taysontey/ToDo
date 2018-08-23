@@ -1,6 +1,6 @@
 ﻿namespace ToDo.Dominio.Entidades
 {
-    public class SubTarefa
+    public class Subtarefa
     {
         public int Id { get; set; }
         public string Nome { get; set; }

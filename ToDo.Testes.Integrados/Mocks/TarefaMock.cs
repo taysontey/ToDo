@@ -1,17 +1,13 @@
-﻿using System.Collections.Generic;
-using ToDo.Dominio.Entidades;
+﻿using ToDo.Dominio.Entidades;
 
 namespace ToDo.Testes.Integrados.Mocks
 {
     public class TarefaMock
     {
-        static readonly IEnumerable<Tarefa> Tarefas = new List<Tarefa>
+        public static readonly Tarefa Tarefa = new Tarefa
         {
-            new Tarefa
-            {
-                Nome = "NUnitTesteNome",
-                Descricao = "NunitTesteDescricao"
-            }
+            Nome = "TesteNome",
+            Descricao = "TesteDescricao"
         };
     }
 }

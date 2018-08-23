@@ -3,7 +3,7 @@ using ToDo.Dominio.Entidades;
 
 namespace ToDo.AcessoDados.Repositorio
 {
-    public class RepositorioSubTarefa : RepositorioBase<SubTarefa>, IRepositorioSubTarefa
+    public class RepositorioSubtarefa : RepositorioBase<Subtarefa>, IRepositorioSubtarefa
     {
 
     }

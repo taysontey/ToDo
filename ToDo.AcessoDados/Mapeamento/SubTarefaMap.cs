@@ -3,35 +3,31 @@ using ToDo.Dominio.Entidades;
 
 namespace ToDo.AcessoDados.Mapeamento
 {
-    public class SubTarefaMap : EntityTypeConfiguration<SubTarefa>
+    public class SubtarefaMap : EntityTypeConfiguration<Subtarefa>
     {
-        public SubTarefaMap()
+        public SubtarefaMap()
         {
-            ToTable("SUBTAREFA");
+            ToTable("Subtarefa");
 
             HasKey(s => s.Id);
 
             Property(s => s.Id)
-                .HasColumnName("ID")
                 .IsRequired();
 
             Property(s => s.Nome)
-               .HasColumnName("NOME")
                .HasMaxLength(64)
                .IsRequired();
 
             Property(s => s.Concluida)
-               .HasColumnName("CONCLUIDA")
                .IsRequired();
 
             #region Relacionamentos
 
             Property(s => s.IdTarefa)
-               .HasColumnName("IDTAREFA")
                .IsRequired();
 
             HasRequired(s => s.Tarefa)
-                .WithMany(t => t.SubTarefas)
+                .WithMany(t => t.Subtarefas)
                 .HasForeignKey(s => s.IdTarefa);
 
             #endregion

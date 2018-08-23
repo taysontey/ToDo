@@ -4,13 +4,13 @@ using ToDo.Dominio.Entidades;
 
 namespace ToDo.Negocio.Operacao
 {
-    public class OperacaoSubTarefa : OperacaoBase<SubTarefa>
+    public class OperacaoSubtarefa : OperacaoBase<Subtarefa>
     {
-        private IRepositorioSubTarefa _repositorioSubTarefa;
+        private IRepositorioSubtarefa _repositorioSubtarefa;
 
-        public OperacaoSubTarefa()
+        public OperacaoSubtarefa()
         {
-            _repositorioSubTarefa = new RepositorioSubTarefa();
+            _repositorioSubtarefa = new RepositorioSubtarefa();
         }
     }
 }

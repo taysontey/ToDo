@@ -2,7 +2,7 @@
 
 namespace ToDo.AcessoDados.Repositorio.Interfaces
 {
-    public interface IRepositorioSubTarefa : IRepositorioBase<SubTarefa>
+    public interface IRepositorioSubtarefa : IRepositorioBase<Subtarefa>
     {
 
     }

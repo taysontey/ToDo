@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Operacao\OperacaoBase.cs" />
-    <Compile Include="Operacao\OperacaoSubTarefa.cs" />
+    <Compile Include="Operacao\OperacaoSubtarefa.cs" />
     <Compile Include="Operacao\OperacaoTarefa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

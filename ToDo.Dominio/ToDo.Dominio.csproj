@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entidades\SubTarefa.cs" />
+    <Compile Include="Entidades\Subtarefa.cs" />
     <Compile Include="Entidades\Tarefa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

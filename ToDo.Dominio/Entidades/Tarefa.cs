@@ -9,6 +9,6 @@ namespace ToDo.Dominio.Entidades
         public string Descricao { get; set; }
         public bool Concluida { get; set; }
 
-        public ICollection<SubTarefa> SubTarefas { get; set; }
+        public ICollection<Subtarefa> Subtarefas { get; set; }
     }
 }

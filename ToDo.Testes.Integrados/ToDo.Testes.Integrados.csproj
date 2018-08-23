@@ -55,7 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mocks\SubtarefaMock.cs" />
     <Compile Include="Mocks\TarefaMock.cs" />
+    <Compile Include="OperacaoTestes\OperacaoSubtarefaTestes.cs" />
     <Compile Include="OperacaoTestes\OperacaoTarefaTestes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
