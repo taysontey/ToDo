@@ -2,8 +2,8 @@
 
 namespace ToDo.WebAPI.Controllers
 {
-    public class TarefaController : BaseController<Tarefa>
+    public class SubtarefaController : BaseController<Subtarefa>
     {
-        
+
     }
 }
