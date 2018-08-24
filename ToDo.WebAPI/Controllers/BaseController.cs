@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Mapster;
+using System;
 using System.Linq;
 using System.Web.Http;
 using ToDo.Negocio.Operacao;
 
 namespace ToDo.WebAPI.Controllers
 {
-    public class BaseController<T> : ApiController
+    public class BaseController<TDTO, T> : ApiController
+        where TDTO : class
         where T : class
     {
         [HttpGet] // api/{controller}
@@ -37,12 +39,12 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpPost] // api/{controller}
-        public IHttpActionResult Post([FromBody]T obj)
+        public IHttpActionResult Post([FromBody]TDTO dto)
         {
             try
             {
-                var sucesso = OperacaoBase.Salvar(obj);
-                return Ok(obj);
+                var sucesso = OperacaoBase.Salvar(dto.Adapt<T>());
+                return Ok(dto);
             }
             catch (Exception e)
             {
@@ -51,12 +53,12 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpPut] // api/{controller}
-        public IHttpActionResult Put([FromBody]T obj)
+        public IHttpActionResult Put([FromBody]TDTO dto)
         {
             try
             {
-                var sucesso = OperacaoBase.Atualizar(obj);
-                return Ok(obj);
+                var sucesso = OperacaoBase.Atualizar(dto.Adapt<T>());
+                return Ok(dto);
             }
             catch (Exception e)
             {
@@ -65,12 +67,12 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpDelete] // api/{controller}
-        public IHttpActionResult Delete([FromBody]T obj)
+        public IHttpActionResult Delete([FromBody]TDTO dto)
         {
             try
             {
-                var sucesso = OperacaoBase.Excluir(obj);
-                return Ok(obj);
+                var sucesso = OperacaoBase.Excluir(dto.Adapt<T>());
+                return Ok(dto);
             }
             catch (Exception e)
             {
