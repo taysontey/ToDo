@@ -1,6 +1,6 @@
-﻿namespace ToDo.Dominio.Entidades
+﻿namespace ToDo.WebAPI.Models
 {
-    public class Subtarefa
+    public class SubtarefaDTO
     {
         public int Id { get; set; }
         public string Nome { get; set; }
@@ -9,6 +9,7 @@
         #region Relacionamentos
 
         public int IdTarefa { get; set; }
+        public TarefaDTO Tarefa { get; set; }
 
         #endregion
     }

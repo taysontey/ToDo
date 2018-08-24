@@ -24,6 +24,10 @@ namespace ToDo.AcessoDados.Mapeamento
 
             Property(t => t.Concluida)
                .IsRequired();
+
+            HasMany(x => x.Subtarefas)
+                .WithRequired()
+                .HasForeignKey(x => x.IdTarefa);
         }
     }
 }

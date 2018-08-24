@@ -20,14 +20,6 @@ namespace ToDo.AcessoDados.Mapeamento
 
             Property(s => s.Concluida)
                .IsRequired();
-
-            #region Relacionamentos
-
-            HasRequired(s => s.Tarefa)
-                .WithMany(t => t.Subtarefas)
-                .HasForeignKey(s => s.IdTarefa);
-
-            #endregion
         }
     }
 }
