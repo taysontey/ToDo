@@ -15,16 +15,13 @@ namespace ToDo.AcessoDados.Mapeamento
                 .IsRequired();
 
             Property(s => s.Nome)
-               .HasMaxLength(64)
+               .HasMaxLength(32)
                .IsRequired();
 
             Property(s => s.Concluida)
                .IsRequired();
 
             #region Relacionamentos
-
-            Property(s => s.IdTarefa)
-               .IsRequired();
 
             HasRequired(s => s.Tarefa)
                 .WithMany(t => t.Subtarefas)

@@ -1,32 +1,19 @@
 ﻿using NUnit.Framework;
 using System.Linq;
+using ToDo.Dominio.Entidades;
 using ToDo.Negocio.Operacao;
 using ToDo.Testes.Integrados.Mocks;
 
 namespace ToDo.Testes.Integrados.OperacaoTestes
 {
     [TestFixture]
-    public class OperacaoTarefaTestes
+    public class OperacaoTarefaTestes : OperacaoBaseTestes
     {
-        private OperacaoTarefa _operacaoTarefa;
-        public OperacaoTarefa OperacaoTarefa
+        [Test, TestCaseSource(typeof(TarefaMock), "Tarefas")]
+        public void QuantoSalvarTarefaDeveRetornarSucesso(Tarefa tarefa)
         {
-            get => _operacaoTarefa ?? (_operacaoTarefa = new OperacaoTarefa());
-            set => _operacaoTarefa = value;
-        }
-
-        [SetUp]
-        public void Initialize()
-        {
-            var sucesso = OperacaoTarefa.Salvar(TarefaMock.Tarefa);
+            var sucesso = OperacaoTarefa.Salvar(tarefa);
             Assert.IsTrue(sucesso, "Erro ao salvar tarefa.");
-        }
-
-        [TearDown]
-        public void Dispose()
-        {
-            var sucesso = OperacaoTarefa.Excluir(TarefaMock.Tarefa);
-            Assert.IsTrue(sucesso, "Erro ao excluir tarefa.");
         }
 
         [Test]
@@ -48,6 +35,13 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
         {
             var tarefa = OperacaoTarefa.ObterPorId(TarefaMock.Tarefa.Id);
             Assert.IsNotNull(tarefa, "Tarefa não encontrada.");
+        }
+
+        [Test]
+        public void QuandoExcluirTarefaDeveRetornarSucesso()
+        {
+            var sucesso = OperacaoTarefa.Excluir(TarefaMock.Tarefa);
+            Assert.IsTrue(sucesso, "Erro ao excluir tarefa.");
         }
     }
 }

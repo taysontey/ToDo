@@ -1,4 +1,5 @@
-﻿using ToDo.Dominio.Entidades;
+﻿using System.Collections.Generic;
+using ToDo.Dominio.Entidades;
 
 namespace ToDo.Testes.Integrados.Mocks
 {
@@ -6,12 +7,28 @@ namespace ToDo.Testes.Integrados.Mocks
     {
         public static readonly Subtarefa Subtarefa = new Subtarefa
         {
-            Nome = "TesteNome"
+            Nome = "TesteNome_1"
         };
 
-        public static void AdicionarIdTarefa()
+        static readonly IEnumerable<Subtarefa> Subtarefas = new List<Subtarefa>
         {
-            Subtarefa.IdTarefa = TarefaMock.Tarefa.Id;
+            new Subtarefa
+            {
+                Nome = "TesteNome_2"
+            },
+            new Subtarefa
+            {
+                Nome = "TesteNome_3"
+            },
+            new Subtarefa
+            {
+                Nome = "TesteNome_4"
+            }
+        };
+
+        public static void AdicionarTarefa(Subtarefa subtarefa)
+        {
+            subtarefa.IdTarefa = TarefaMock.Tarefa.Id;
         }
     }
 }

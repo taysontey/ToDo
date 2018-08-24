@@ -15,7 +15,7 @@ namespace ToDo.AcessoDados.Mapeamento
                 .IsRequired();
 
             Property(t => t.Nome)
-               .HasMaxLength(64)
+               .HasMaxLength(32)
                .IsRequired();
 
             Property(t => t.Descricao)
