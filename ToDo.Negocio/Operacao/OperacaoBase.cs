@@ -24,9 +24,9 @@ namespace ToDo.Negocio.Operacao
             return _repositorioBase.Atualizar(obj);
         }
 
-        public virtual bool Excluir(T obj)
+        public virtual bool Excluir(int id)
         {
-            return _repositorioBase.Excluir(obj);
+            return _repositorioBase.Excluir(id);
         }
 
         public virtual IEnumerable<T> ObterTodos()

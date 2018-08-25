@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System.Linq;
 using ToDo.Negocio.Operacao;
 using ToDo.Testes.Integrados.Mocks;
 
@@ -33,15 +32,15 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
         [OneTimeTearDown]
         public void Cleanup()
         {
-            var subtarefas = OperacaoSubtarefa.ObterTodos().ToList();
+            var subtarefas = OperacaoSubtarefa.ObterTodos();
 
             foreach (var subtarefa in subtarefas)
-                OperacaoSubtarefa.Excluir(subtarefa);
+                OperacaoSubtarefa.Excluir(subtarefa.Id);
 
-            var tarefas = OperacaoTarefa.ObterTodos().ToList();
+            var tarefas = OperacaoTarefa.ObterTodos();
 
             foreach (var tarefa in tarefas)
-                OperacaoTarefa.Excluir(tarefa);
+                OperacaoTarefa.Excluir(tarefa.Id);
         }
     }
 }

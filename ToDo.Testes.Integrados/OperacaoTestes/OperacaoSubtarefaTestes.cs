@@ -41,7 +41,7 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
         [Test]
         public void QuandoExcluirSubtarefaDeveRetornarSucesso()
         {
-            var sucesso = OperacaoSubtarefa.Atualizar(SubtarefaMock.Subtarefa);
+            var sucesso = OperacaoSubtarefa.Excluir(SubtarefaMock.Subtarefa.Id);
             Assert.IsTrue(sucesso, "Erro ao excluir subtarefa.");
         }
     }

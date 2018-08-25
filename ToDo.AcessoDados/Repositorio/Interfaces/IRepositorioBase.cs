@@ -7,7 +7,7 @@ namespace ToDo.AcessoDados.Repositorio.Interfaces
     {
         bool Salvar(T obj);
         bool Atualizar(T obj);
-        bool Excluir(T obj);
+        bool Excluir(int id);
         IEnumerable<T> ObterTodos();
         T ObterPorId(int id);
     }

@@ -1,6 +1,6 @@
 ﻿using Mapster;
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Web.Http;
 using ToDo.Negocio.Operacao;
 
@@ -15,8 +15,8 @@ namespace ToDo.WebAPI.Controllers
         {
             try
             {
-                var retorno = OperacaoBase.ObterTodos().ToList();
-                return Ok(retorno);
+                var retorno = OperacaoBase.ObterTodos();
+                return Ok(retorno.Adapt<IEnumerable<TDTO>>());
             }
             catch (Exception e)
             {
@@ -29,8 +29,8 @@ namespace ToDo.WebAPI.Controllers
         {
             try
             {
-                var tarefa = OperacaoBase.ObterPorId(id);
-                return Ok(tarefa);
+                var retorno = OperacaoBase.ObterPorId(id);
+                return Ok(retorno.Adapt<TDTO>());
             }
             catch (Exception e)
             {
@@ -44,7 +44,7 @@ namespace ToDo.WebAPI.Controllers
             try
             {
                 var sucesso = OperacaoBase.Salvar(dto.Adapt<T>());
-                return Ok(dto);
+                return Ok(sucesso);
             }
             catch (Exception e)
             {
@@ -58,7 +58,7 @@ namespace ToDo.WebAPI.Controllers
             try
             {
                 var sucesso = OperacaoBase.Atualizar(dto.Adapt<T>());
-                return Ok(dto);
+                return Ok(sucesso);
             }
             catch (Exception e)
             {
@@ -67,12 +67,12 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpDelete] // api/{controller}
-        public IHttpActionResult Delete([FromBody]TDTO dto)
+        public IHttpActionResult Delete(int id)
         {
             try
             {
-                var sucesso = OperacaoBase.Excluir(dto.Adapt<T>());
-                return Ok(dto);
+                var sucesso = OperacaoBase.Excluir(id);
+                return Ok(sucesso);
             }
             catch (Exception e)
             {

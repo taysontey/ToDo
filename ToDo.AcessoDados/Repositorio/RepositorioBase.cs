@@ -41,11 +41,11 @@ namespace ToDo.AcessoDados.Repositorio
             }
         }
 
-        public virtual bool Excluir(T obj)
+        public virtual bool Excluir(int id)
         {
             try
             {
-                Contexto.Entry(obj).State = EntityState.Deleted;
+                Contexto.Set<T>().Remove(Contexto.Set<T>().Find(id));
                 return Convert.ToBoolean(Contexto.SaveChanges());
             }
             catch (Exception e)

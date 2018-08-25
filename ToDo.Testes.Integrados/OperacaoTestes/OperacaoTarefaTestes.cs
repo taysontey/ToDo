@@ -40,7 +40,7 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
         [Test]
         public void QuandoExcluirTarefaDeveRetornarSucesso()
         {
-            var sucesso = OperacaoTarefa.Excluir(TarefaMock.Tarefa);
+            var sucesso = OperacaoTarefa.Excluir(TarefaMock.Tarefa.Id);
             Assert.IsTrue(sucesso, "Erro ao excluir tarefa.");
         }
     }
