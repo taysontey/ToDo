@@ -2,13 +2,13 @@
 
 namespace ToDo.AcessoDados.Repositorio.Interfaces
 {
-    public interface IRepositorioBase<T>
-        where T : class
+    public interface IRepositorioBase<TEntity>
+        where TEntity : class
     {
-        bool Salvar(T obj);
-        bool Atualizar(T obj);
+        bool Salvar(TEntity obj);
+        bool Atualizar(TEntity obj);
         bool Excluir(int id);
-        IEnumerable<T> ObterTodos();
-        T ObterPorId(int id);
+        IEnumerable<TEntity> ObterTodos();
+        TEntity ObterPorId(int id);
     }
 }

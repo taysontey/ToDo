@@ -5,8 +5,8 @@ using ToDo.AcessoDados.Repositorio.Interfaces;
 
 namespace ToDo.AcessoDados.Repositorio
 {
-    public class RepositorioBase<T> : IRepositorioBase<T>, IDisposable
-        where T : class
+    public class RepositorioBase<TEntity> : IRepositorioBase<TEntity>, IDisposable
+        where TEntity : class
     {
         protected Contexto Contexto;
 
@@ -15,7 +15,7 @@ namespace ToDo.AcessoDados.Repositorio
             Contexto = new Contexto();
         }
 
-        public virtual bool Salvar(T obj)
+        public virtual bool Salvar(TEntity obj)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace ToDo.AcessoDados.Repositorio
             }
         }
 
-        public virtual bool Atualizar(T obj)
+        public virtual bool Atualizar(TEntity obj)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace ToDo.AcessoDados.Repositorio
         {
             try
             {
-                Contexto.Set<T>().Remove(Contexto.Set<T>().Find(id));
+                Contexto.Set<TEntity>().Remove(Contexto.Set<TEntity>().Find(id));
                 return Convert.ToBoolean(Contexto.SaveChanges());
             }
             catch (Exception e)
@@ -54,11 +54,11 @@ namespace ToDo.AcessoDados.Repositorio
             }
         }
 
-        public virtual IEnumerable<T> ObterTodos()
+        public virtual IEnumerable<TEntity> ObterTodos()
         {
             try
             {
-                return Contexto.Set<T>();
+                return Contexto.Set<TEntity>();
             }
             catch (Exception e)
             {
@@ -66,11 +66,11 @@ namespace ToDo.AcessoDados.Repositorio
             }
         }
 
-        public virtual T ObterPorId(int id)
+        public virtual TEntity ObterPorId(int id)
         {
             try
             {
-                return Contexto.Set<T>().Find(id);
+                return Contexto.Set<TEntity>().Find(id);
             }
             catch (Exception e)
             {

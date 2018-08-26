@@ -4,22 +4,22 @@ using ToDo.AcessoDados.Repositorio.Interfaces;
 
 namespace ToDo.Negocio.Operacao
 {
-    public class OperacaoBase<T>
-        where T : class
+    public class OperacaoBase<TEntity>
+        where TEntity : class
     {
-        private IRepositorioBase<T> _repositorioBase;
+        private IRepositorioBase<TEntity> _repositorioBase;
 
         public OperacaoBase()
         {
-            _repositorioBase = new RepositorioBase<T>();
+            _repositorioBase = new RepositorioBase<TEntity>();
         }
 
-        public virtual bool Salvar(T obj)
+        public virtual bool Salvar(TEntity obj)
         {
             return _repositorioBase.Salvar(obj);
         }
 
-        public virtual bool Atualizar(T obj)
+        public virtual bool Atualizar(TEntity obj)
         {
             return _repositorioBase.Atualizar(obj);
         }
@@ -29,12 +29,12 @@ namespace ToDo.Negocio.Operacao
             return _repositorioBase.Excluir(id);
         }
 
-        public virtual IEnumerable<T> ObterTodos()
+        public virtual IEnumerable<TEntity> ObterTodos()
         {
             return _repositorioBase.ObterTodos();
         }
 
-        public virtual T ObterPorId(int id)
+        public virtual TEntity ObterPorId(int id)
         {
             return _repositorioBase.ObterPorId(id);
         }

@@ -6,9 +6,9 @@ using ToDo.Negocio.Operacao;
 
 namespace ToDo.WebAPI.Controllers
 {
-    public class BaseController<TDTO, T> : ApiController
+    public class BaseController<TDTO, TEntity> : ApiController
         where TDTO : class
-        where T : class
+        where TEntity : class
     {
         [HttpGet] // api/{controller}
         public IHttpActionResult Get()
@@ -43,7 +43,7 @@ namespace ToDo.WebAPI.Controllers
         {
             try
             {
-                var sucesso = OperacaoBase.Salvar(dto.Adapt<T>());
+                var sucesso = OperacaoBase.Salvar(dto.Adapt<TEntity>());
                 return Ok(sucesso);
             }
             catch (Exception e)
@@ -57,7 +57,7 @@ namespace ToDo.WebAPI.Controllers
         {
             try
             {
-                var sucesso = OperacaoBase.Atualizar(dto.Adapt<T>());
+                var sucesso = OperacaoBase.Atualizar(dto.Adapt<TEntity>());
                 return Ok(sucesso);
             }
             catch (Exception e)
@@ -80,10 +80,10 @@ namespace ToDo.WebAPI.Controllers
             }
         }
 
-        private OperacaoBase<T> _operacaoBase;
-        public OperacaoBase<T> OperacaoBase
+        private OperacaoBase<TEntity> _operacaoBase;
+        public OperacaoBase<TEntity> OperacaoBase
         {
-            get => _operacaoBase ?? (_operacaoBase = new OperacaoBase<T>());
+            get => _operacaoBase ?? (_operacaoBase = new OperacaoBase<TEntity>());
             set => _operacaoBase = value;
         }
     }
