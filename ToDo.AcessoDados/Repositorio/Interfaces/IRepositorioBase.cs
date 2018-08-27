@@ -10,5 +10,6 @@ namespace ToDo.AcessoDados.Repositorio.Interfaces
         bool Excluir(int id);
         IEnumerable<TEntity> ObterTodos();
         TEntity ObterPorId(int id);
+        IEnumerable<TEntity> ObterPorFiltro(string filtro);
     }
 }

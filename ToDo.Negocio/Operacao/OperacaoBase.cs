@@ -38,5 +38,10 @@ namespace ToDo.Negocio.Operacao
         {
             return _repositorioBase.ObterPorId(id);
         }
+
+        public virtual IEnumerable<TEntity> ObterPorFiltro(string filtro)
+        {
+            return _repositorioBase.ObterPorFiltro(filtro);
+        }
     }
 }

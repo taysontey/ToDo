@@ -38,6 +38,20 @@ namespace ToDo.WebAPI.Controllers
             }
         }
 
+        [HttpGet] // api/{controller}
+        public IHttpActionResult Get(string filtro)
+        {
+            try
+            {
+                var retorno = OperacaoBase.ObterPorFiltro(filtro);
+                return Ok(retorno.Adapt<IEnumerable<TDTO>>());
+            }
+            catch (Exception e)
+            {
+                return InternalServerError(e);
+            }
+        }
+
         [HttpPost] // api/{controller}
         public IHttpActionResult Post([FromBody]TDTO dto)
         {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using ToDo.AcessoDados.Repositorio.Interfaces;
 
 namespace ToDo.AcessoDados.Repositorio
@@ -71,6 +72,21 @@ namespace ToDo.AcessoDados.Repositorio
             try
             {
                 return Contexto.Set<TEntity>().Find(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public virtual IEnumerable<TEntity> ObterPorFiltro(string filtro)
+        {
+            try
+            {
+                return Contexto.Set<TEntity>()
+                               .ToList()
+                               .Where(x => x.GetType().GetProperties().Any(p => p.PropertyType == typeof(string)
+                                                                             && ((string)p.GetValue(x, null)).Contains(filtro)));
             }
             catch (Exception e)
             {
