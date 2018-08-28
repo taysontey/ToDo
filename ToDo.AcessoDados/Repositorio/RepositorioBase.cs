@@ -86,7 +86,7 @@ namespace ToDo.AcessoDados.Repositorio
                 return Contexto.Set<TEntity>()
                                .ToList()
                                .Where(x => x.GetType().GetProperties().Any(p => p.PropertyType == typeof(string)
-                                                                             && ((string)p.GetValue(x, null)).Contains(filtro)));
+                                                                             && ((string)p.GetValue(x, null)).Contains(filtro ?? string.Empty)));
             }
             catch (Exception e)
             {

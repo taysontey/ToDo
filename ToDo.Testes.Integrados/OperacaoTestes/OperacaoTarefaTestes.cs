@@ -38,6 +38,13 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
         }
 
         [Test]
+        public void QuandoObterPorFiltroDeveRetornarTarefas()
+        {
+            var tarefas = OperacaoTarefa.ObterPorFiltro(TarefaMock.Tarefa.Nome);
+            Assert.IsNotNull(tarefas.Any(), "Nenhuma tarefa encontrada.");
+        }
+
+        [Test]
         public void QuandoExcluirTarefaDeveRetornarSucesso()
         {
             var sucesso = OperacaoTarefa.Excluir(TarefaMock.Tarefa.Id);

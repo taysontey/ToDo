@@ -12,5 +12,10 @@ namespace ToDo.Negocio.Operacao
         {
             _repositorioTarefa = new RepositorioTarefa();
         }
+
+        public double ObterProgressoTarefa(bool concluida)
+        {
+            return _repositorioTarefa.ObterProgressoTarefa(concluida);
+        }
     }
 }

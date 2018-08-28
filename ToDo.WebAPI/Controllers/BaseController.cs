@@ -11,7 +11,7 @@ namespace ToDo.WebAPI.Controllers
         where TEntity : class
     {
         [HttpGet] // api/{controller}
-        public IHttpActionResult Get()
+        public IHttpActionResult ObterTodos()
         {
             try
             {
@@ -25,7 +25,7 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpGet] // api/{controller}/{id}
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult ObterPorId(int id)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpGet] // api/{controller}
-        public IHttpActionResult Get(string filtro)
+        public IHttpActionResult ObterPorFiltro(string filtro)
         {
             try
             {
@@ -53,7 +53,7 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpPost] // api/{controller}
-        public IHttpActionResult Post([FromBody]TDTO dto)
+        public IHttpActionResult Salvar([FromBody]TDTO dto)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpPut] // api/{controller}
-        public IHttpActionResult Put([FromBody]TDTO dto)
+        public IHttpActionResult Atualizar([FromBody]TDTO dto)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace ToDo.WebAPI.Controllers
         }
 
         [HttpDelete] // api/{controller}
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Excluir(int id)
         {
             try
             {
