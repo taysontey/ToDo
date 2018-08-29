@@ -11,7 +11,7 @@ namespace ToDo.AcessoDados.Repositorio
         {
             try
             {
-                return Contexto.Set<Tarefa>().Average(x => x.Concluida == concluida ? 1.0 : 0.0) * 100;
+                return Contexto.Set<Tarefa>().DefaultIfEmpty().Average(x => x.Concluida == concluida ? 1.0 : 0.0) * 100;
             }
             catch (Exception e)
             {
