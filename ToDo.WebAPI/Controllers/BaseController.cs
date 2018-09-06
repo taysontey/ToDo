@@ -1,4 +1,5 @@
-﻿using Mapster;
+﻿using FluentValidation;
+using Mapster;
 using System;
 using System.Collections.Generic;
 using System.Web.Http;
@@ -6,9 +7,10 @@ using ToDo.Negocio.Operacao;
 
 namespace ToDo.WebAPI.Controllers
 {
-    public class BaseController<TDTO, TEntity> : ApiController
+    public class BaseController<TDTO, TEntity, TValidator> : ApiController
         where TDTO : class
         where TEntity : class
+        where TValidator : IValidator
     {
         [HttpGet] // api/{controller}
         public IHttpActionResult ObterTodos()
@@ -57,8 +59,15 @@ namespace ToDo.WebAPI.Controllers
         {
             try
             {
-                var sucesso = OperacaoBase.Salvar(dto.Adapt<TEntity>());
-                return Ok(sucesso);
+                var resultado = ((IValidator)Activator.CreateInstance(typeof(TValidator))).Validate(dto);
+
+                if (resultado.IsValid)
+                {
+                    var sucesso = OperacaoBase.Salvar(dto.Adapt<TEntity>());
+                    return Ok(sucesso);
+                }
+                else
+                    return BadRequest(resultado.ToString());               
             }
             catch (Exception e)
             {
@@ -71,8 +80,15 @@ namespace ToDo.WebAPI.Controllers
         {
             try
             {
-                var sucesso = OperacaoBase.Atualizar(dto.Adapt<TEntity>());
-                return Ok(sucesso);
+                var resultado = ((IValidator)Activator.CreateInstance(typeof(TValidator))).Validate(dto);
+
+                if (resultado.IsValid)
+                {
+                    var sucesso = OperacaoBase.Atualizar(dto.Adapt<TEntity>());
+                    return Ok(sucesso);
+                }
+                else
+                    return BadRequest(resultado.ToString());
             }
             catch (Exception e)
             {
