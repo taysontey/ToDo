@@ -10,7 +10,7 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
     public class OperacaoTarefaTestes : OperacaoBaseTestes
     {
         [Test, TestCaseSource(typeof(TarefaMock), "Tarefas")]
-        public void QuantoSalvarTarefaDeveRetornarSucesso(Tarefa tarefa)
+        public void QuandoSalvarTarefaDeveRetornarSucesso(Tarefa tarefa)
         {
             var sucesso = OperacaoTarefa.Salvar(tarefa);
             Assert.IsTrue(sucesso, "Erro ao salvar tarefa.");

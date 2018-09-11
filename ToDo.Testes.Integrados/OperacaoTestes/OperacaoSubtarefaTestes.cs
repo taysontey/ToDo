@@ -42,7 +42,14 @@ namespace ToDo.Testes.Integrados.OperacaoTestes
         public void QuandoObterPorFiltroDeveRetornarSubtarefas()
         {
             var subtarefas = OperacaoSubtarefa.ObterPorFiltro(SubtarefaMock.Subtarefa.Nome);
-            Assert.IsNotNull(subtarefas.Any(), "Nenhuma subtarefa encontrada.");
+            Assert.IsTrue(subtarefas.Any(), "Nenhuma subtarefa encontrada.");
+        }
+
+        [Test]
+        public void QuandoObterPorIdTarefaDeveRetornarSubtarefas()
+        {
+            var subtarefas = OperacaoSubtarefa.ObterPorIdTarefa(TarefaMock.Tarefa.Id);
+            Assert.IsTrue(subtarefas.Any(), "Nenhuma subtarefa encontrada");
         }
 
         [Test]

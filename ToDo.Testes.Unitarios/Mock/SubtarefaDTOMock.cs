@@ -11,5 +11,13 @@ namespace ToDo.Testes.Unitarios.Mock
             Concluida = true,
             IdTarefa = 1
         };
+
+        public static readonly SubtarefaDTO SubtarefaSemNome = new SubtarefaDTO
+        {
+            Id = 1,
+            Nome = "",
+            Concluida = true,
+            IdTarefa = 1
+        };
     }
 }
